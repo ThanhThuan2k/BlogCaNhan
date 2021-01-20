@@ -24,8 +24,8 @@ namespace BlogCaNhan.Web.Controllers
         [HttpPost]
         public IActionResult ThemTheLoai(TheLoai theloai)
         {
-            db.TheLoai.Add(theloai);
-            db.SaveChanges();
+            //db.TheLoai.Add(theloai);
+            //db.SaveChanges();
             return View();
         }
     }

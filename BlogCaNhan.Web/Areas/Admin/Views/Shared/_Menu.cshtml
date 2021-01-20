@@ -1,0 +1,32 @@
+﻿<div id="menu-bar">
+    <ul>
+        <li class="active"><a asp-action="Index" asp-controller="Home"><i class="fas fa-home"></i>Home</a></li>
+        <li>
+            <a href="#"><i class="fa fa-user"></i>Sinh viên</a>
+            <div class="sub-menu-1">
+                <ul>
+                    <li><a asp-action="Index" asp-controller="TheLoai">Danh sách thể loại</a></li>
+                    <li><a asp-action="ThemHocSinh" asp-controller="HocSinh">Thêm sinh viên</a></li>
+                    <li><a asp-action="XoaThongTin" asp-controller="HocSinh">Xóa sinh viên</a></li>
+                    <li><a asp-action="ChinhSuaThongTin" asp-controller="HocSinh">Chỉnh sửa thông tin</a></li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <a href="#"><i class="fa fa-concierge-bell"></i>Lớp học</a>
+            <div class="sub-menu-1">
+                <ul>
+                    <li><a asp-action="DanhSach" asp-controller="Lop">Danh sách lớp học</a></li>
+                    <li><a asp-action="Create" asp-controller="Lop">Tạo lớp học</a></li>
+                    <li><a asp-action="Xoa" asp-controller="Lop">Kết thúc lớp học</a></li>
+                    <li><a asp-action="Edit" asp-controller="Lop">Chỉnh sửa lớp học</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="#"><i class="fa fa-users"></i>Clients</a></li>
+        <li><a href="#"><i class="fab fa-angellist"></i>Investers</a></li>
+        <li><a href="#"><i class="fa fa-dollar-sign"></i>Pricing</a></li>
+        <li><a href="#"><i class="fa fa-edit"></i>Training</a></li>
+        <li><a href="#"><i class="fa fa-phone"></i>Contact</a></li>
+    </ul>
+</div>

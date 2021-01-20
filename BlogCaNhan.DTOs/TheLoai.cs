@@ -7,7 +7,6 @@ using System.Text;
 
 namespace BlogCaNhan.DTOs
 {
-    [Index("Url", IsUnique = true)]
     [Table("TheLoai")]
     public class TheLoai
     {
@@ -19,5 +18,7 @@ namespace BlogCaNhan.DTOs
 
         [MaxLength(500, ErrorMessage = "Vượt quá độ dài cố định")]
         public string Url { get; set; }
+
+        public ICollection<BaiViet>  BaiViets { get; set; }
     }
 }
