@@ -62,6 +62,22 @@
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
     <script>
+        function getAdmins(page = 1) {
+            var url = "/admin/admin/getadmins?page=" + page;
+            $.get(url, {}, function (data, statusText, jqXHR) {
+                console.log(data);
+                $('#admin').html(data);
+            });
+        }
+
+        function getBlocked(page = 1) {
+            var url = "/admin/admin/getblocked?page=" + page;
+            $.get(url, {}, function (data, statusText, jsXHR) {
+                console.log(data);
+                $('#blocked').html(data);
+            });
+        }
+
         function ajaxSuccess(data, textStatus, xhr) {
             $('.modal').modal('hide');
 
@@ -95,7 +111,7 @@
                 console.log(data, data.success);
                 if (data.success == true) {
                     alert(data.statusText);
-                    location.reload();
+                    getAdmins(1);
                 }
                 else {
                     alert(data.statusText);
@@ -111,7 +127,7 @@
                 console.log(data.statusText, data.success);
                 if (data.success) {
                     alert("Mở khóa tài khoản thành công");
-                    location.reload();
+                    getBlocked(1);
                 } else {
                     alert("Vui lòng thử lại sau ít phút nữa");
                 }

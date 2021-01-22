@@ -123,5 +123,19 @@ namespace BlogCaNhan.Web.Areas.Admin.Controllers
                 return Ok(new AjaxResponse(false, "Vui lòng kiểm tra thông tin", 404));
             }    
         }
+
+        public IActionResult GetAdmins(int? page)
+        {
+            int size = 5;
+            var list = adminRepository.GetAdmins(page ?? 1, size);
+            return PartialView("_DanhSachAdmin", list);
+        }
+
+        public IActionResult GetBlocked(int? page)
+        {
+            var size = 5;
+            var list = adminRepository.GetBlocked(page ?? 1, size);
+            return PartialView("_AdminBlocked", list);
+        }
     }
 }

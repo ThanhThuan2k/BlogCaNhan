@@ -101,5 +101,19 @@ namespace BlogCaNhan.Data.Repositories
                 return false;
             }
         }
+
+        public IPagedList<Admin> GetAdmins(int page, int size)
+        {
+            return db.Admin.Where(item => item.isBlock != true)
+                .OrderByDescending(item => item.NgayTao)
+                .ToPagedList(page, size);
+        }
+
+        public IPagedList<Admin> GetBlocked(int page, int size)
+        {
+            return db.Admin.Where(item => item.isBlock == true)
+                .OrderByDescending(item => item.NgayTao)
+                .ToPagedList(page, size);
+        }
     }
 }

@@ -165,3 +165,8 @@ D:\C#\BlogCaNhan_New\BlogCaNhan\BlogCaNhan.Web\bin\Debug\netcoreapp3.1\System.Te
 D:\C#\BlogCaNhan_New\BlogCaNhan\BlogCaNhan.Web\bin\Debug\netcoreapp3.1\PagedList.Core.dll
 D:\C#\BlogCaNhan_New\BlogCaNhan\BlogCaNhan.Web\bin\Debug\netcoreapp3.1\PagedList.Core.Mvc.dll
 D:\C#\BlogCaNhan_New\BlogCaNhan\BlogCaNhan.Web\obj\Debug\netcoreapp3.1\BlogCaNhan.Web.MvcApplicationPartsAssemblyInfo.cs
+D:\C#\BlogCaNhan_New\BlogCaNhan\BlogCaNhan.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Admin\DanhSachAdmin.cshtml.g.cs
+D:\C#\BlogCaNhan_New\BlogCaNhan\BlogCaNhan.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Admin\_AdminBlocked.cshtml.g.cs
+D:\C#\BlogCaNhan_New\BlogCaNhan\BlogCaNhan.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Admin\_DanhSachAdmin.cshtml.g.cs
+D:\C#\BlogCaNhan_New\BlogCaNhan\BlogCaNhan.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Admin\_ThemMoiAdmin.cshtml.g.cs
+D:\C#\BlogCaNhan_New\BlogCaNhan\BlogCaNhan.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\_UnobtrusiveScript.cshtml.g.cs
