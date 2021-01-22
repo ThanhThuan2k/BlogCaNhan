@@ -1,0 +1,72 @@
+﻿.ql-snow {
+    background: white;
+}
+
+.ql-tooltip {
+    z-index: 10;
+}
+
+#wrapper #content-wrapper {
+    overflow-x: unset;
+}
+
+.avatar-group {
+    width: 100%;
+    height: 535px;
+    padding: 10px;
+    border: solid 1px rgb(228, 228, 228);
+    border-radius: 5px;
+}
+
+    .avatar-group > .avatar {
+        width: inherit;
+        height: 100%;
+        border-radius: 5px;
+        border: dotted 1px rgb(88, 88, 88);
+        overflow: hidden;
+        position: relative;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+        .avatar-group > .avatar > span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .avatar-group > .avatar > input[type='file'] {
+            width: inherit;
+            height: inherit;
+            opacity: 0;
+            outline: none;
+            cursor: pointer;
+        }
+
+            .avatar-group > .avatar > input[type='file']::-webkit-file-upload-button {
+                cursor: pointer;
+            }
+
+@media screen and (max-width: 760px) {
+    .avatar-group {
+        height: 400px;
+    }
+}
+
+.form-group .bootstrap-select .btn {
+    color: #858796 !important;
+    background-color: #fff !important;
+    border: 1px solid #d1d3e2 !important;
+}
+
+.form-group .bootstrap-select .btn:focus {
+    color: #6e707e !important;
+    background-color: #fff !important;
+    border-color: #bac8f3 !important;
+    outline: 0 !important;
+    box-shadow: 0 0 0 0.2rem rgba(78,115,223,.25) !important;
+}
+

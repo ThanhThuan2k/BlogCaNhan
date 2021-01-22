@@ -1,0 +1,126 @@
+﻿@model BlogCaNhan.Web.Areas.Admin.ViewModels.CreateAdminViewModel
+
+<div class="modal fade" id="modal-create-admin" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Đăng kí thông tin</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--Tab control-->
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="main-content-tab" data-toggle="tab"
+                           href="#main-content" role="tab" aria-controls="main-content" aria-selected="true">
+                            Thông tin đăng nhập
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="advance-tab" data-toggle="tab"
+                           href="#advance" role="tab" aria-controls="advance" aria-selected="true">
+                            Thông tin cá nhân
+                        </a>
+                    </li>
+                    <li classs="nav-item">
+                        <a class="nav-link" id="avatar-tab" data-toggle="tab"
+                           href="#avatar" role="tab" aria-controls="avatar" aria-selected="true">
+                            Ảnh đại diện
+                        </a>
+                    </li>
+                </ul>
+
+                <form asp-action="ThemMoi" id="themmoi" data-ajax="true" data-ajax-success="ajaxSuccess" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="tab-content">
+
+                        <div class="row tab-pane fade show active pt-3" id="main-content"
+                             role="tabpanel" aria-labelledby="main-content-tab">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label asp-for="Username" class="control-label"></label>
+                                    <input asp-for="Username" class="form-control" autocomplete="off" />
+                                    <span asp-validation-for="Username" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Password" class="control-label"></label>
+                                    <input asp-for="Password" class="form-control" autocomplete="off" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="NhapLaiMatKhau" class="control-label"></label>
+                                    <input asp-for="NhapLaiMatKhau" class="form-control" autocomplete="off" />
+                                    <span asp-validation-for="NhapLaiMatKhau" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-success btn-main">Tiếp theo</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row tab-pane fade pt-3" id="advance" role="tabpanel"
+                             aria-labelledby="advance-tab">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label asp-for="HoTen" class="control-label"></label>
+                                    <input asp-for="HoTen" class="form-control" autocomplete="off" />
+                                    <span asp-validation-for="HoTen" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label"></label>
+                                    <input asp-for="Email" class="form-control" autocomplete="off" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="SDT" class="control-label"></label>
+                                    <input asp-for="SDT" class="form-control" autocomplete="off" />
+                                    <span asp-validation-for="SDT" class="text-danger"></span>
+                                </div>
+                                <div class="form-group d-flex justify-content-around">
+                                    <div class="d-flex justify-content-between">
+                                        <input name="isMale" type="radio" value="true"/>
+                                        <label style="margin-left: 10px;" for="Male">Nam</label>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between">
+                                        <input name="isMale" id="Female" type="radio" value="false" />
+                                        <label style="margin-left: 10px;" for="Female">Nữ</label>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between">
+                                        <input name="isMale" id="None" type="radio" value="null" />
+                                        <label style="margin-left: 10px;" for="None">Khác</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="QueQuan" class="control-label"></label>
+                                    <input asp-for="QueQuan" class="form-control" autocomplete="off" />
+                                    <span asp-validation-for="QueQuan" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="NgaySinh" class="control-label"></label>
+                                    <input asp-for="NgaySinh" class="form-control" autocomplete="off" />
+                                    <span asp-validation-for="NgaySinh" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-success btn-advance">Tiếp theo</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row tab-pane fade pt-3 d-flex" id="avatar" role="tabpanel"
+                             aria-labelledby="avatar-tab">
+                            <input asp-for="Avatar" accept="image/*" />
+                            <button type="submit" class="btn btn-success">Xong</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
