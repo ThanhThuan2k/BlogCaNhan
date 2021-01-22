@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -13,6 +14,13 @@ namespace BlogCaNhan.DTOs
         [Key]
         public int Id { get; set; }
 
+        [NotMapped]
+        [DisplayName("Ảnh đại diện")]
+        public IFormFile Avatar { get; set; }
+
+        [DisplayName("Đường dẫn ảnh đại diện")]
+        public string PathAvatar { get; set; }
+
         [DisplayName("Tên đăng nhập")]
         [MaxLength(500, ErrorMessage = "Vượt quá độ dài tối thiểu")]
         [Required(ErrorMessage = "Đây là trường bắt buộc")]
@@ -21,6 +29,7 @@ namespace BlogCaNhan.DTOs
         [DisplayName("Mật khẩu")]
         [MinLength(4, ErrorMessage = "Mật khẩu quá yếu")]
         [Required(ErrorMessage = "Đây là trường bắt buộc")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [DisplayName("Email")]
@@ -55,6 +64,8 @@ namespace BlogCaNhan.DTOs
 
         [DisplayName("Chuỗi ngẫu nhiên")]
         [MaxLength(1000, ErrorMessage = "Vượt quá giới hạn cố định")]
-        public Guid Salt { get; set; }
+        public string Salt { get; set; }
+
+        public DateTime? lastLogin { get; set; }
     }
 }

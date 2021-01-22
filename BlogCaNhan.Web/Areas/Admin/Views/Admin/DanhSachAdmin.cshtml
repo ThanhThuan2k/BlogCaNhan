@@ -1,0 +1,120 @@
+﻿@using BlogCaNhan.Web.Areas.Admin.ViewModels
+@model DanhSachAdminViewModel
+
+@{
+    ViewData["Title"] = "Danh sách admin";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section css{
+    <link href="~/lib/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+}
+
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-create-admin">
+    Thêm mới
+</button>
+
+<ul class="nav nav-pills mt-3" style="background: lightblue;">
+    <li class="nav-item">
+        <a class="nav-link active" id="admin-tab" data-toggle="tab"
+           href="#admin" role="tab" aria-controls="admin" aria-selected="true">
+            Danh sách admin
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="block-tab" data-toggle="tab"
+           href="#blocked" role="tab" aria-controls="block" aria-selected="true">
+            Danh sách bị khóa
+        </a>
+    </li>
+    <li>
+        <a class="nav-link" id="supper-tab" data-toggle="tab"
+           href="#supper" role="tab" aria-controls="supper" aria-selected="true">
+            Supper Admin
+        </a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="row tab-pane fade show active pt-3 col" id="admin"
+         role="tabpanel" aria-labelledby="admin-tab">
+        <partial name="_DanhSachAdmin" model="Model.Admins" />
+    </div>
+    <div class="row tab-pane fade show pt-3 col" id="blocked"
+         role="tabpanel" aria-labelledby="block-tab">
+        <partial name="_AdminBlocked" model="Model.Blocked" />
+    </div>
+    <div class="row tab-pane fade show pt-3 col" id="supper"
+         role="tabpanel" aria-labelledby="supper-tab">
+        <partial name="_DanhSachAdmin" model="Model.Supper" />
+    </div>
+</div>
+
+<!--Modal thêm mới admin-->
+<partial name="_ThemMoiAdmin" model="new CreateAdminViewModel()" />
+
+<!--Modal chỉnh sửa thông tin admin-->
+@*<partial name="" model="Model" />*@
+
+@section js{
+    @*<partial name="~\Areas\Admin\Views\Shared\_UnobtrusiveScript.cshtml" />*@
+    <script src="~/lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+    <script>
+        function ajaxSuccess(data, textStatus, xhr) {
+            $('.modal').modal('hide');
+
+            $('.modal').modal('hide');
+            setTimeout(function () {
+                location.reload();
+            }, 200);
+        }
+
+        $('.btn-main').on('click', (e) => {
+            e.preventDefault();
+            $('#advance-tab').click();
+        });
+
+        $('.btn-advance').on('click', function (event) {
+            event.preventDefault();
+            $("#avatar-tab").click();
+        });
+
+        function getCurrentPage() {
+            return $(".tab-pane.active #pagination .active").text();
+        }
+
+        $('.btn-lock').on('click', function (event) {
+            event.preventDefault();
+            var id = $(event.currentTarget).data('id');
+            console.log(id);
+
+            var url = "/admin/admin/block/" + id;
+            $.get(url, {}, function (data, statusText, jqXHR) {
+                console.log(data, data.success);
+                if (data.success == true) {
+                    alert(data.statusText);
+                    location.reload();
+                }
+                else {
+                    alert(data.statusText);
+                }
+            });
+        });
+
+        $('.btn-unlock').on('click', function (event) {
+            var id = $(event.currentTarget).data('id');
+            var url = "/admin/admin/unlock/" + id;
+
+            $.get(url, {}, function (data, statusText, jqXHR) {
+                console.log(data.statusText, data.success);
+                if (data.success) {
+                    alert("Mở khóa tài khoản thành công");
+                } else {
+                    alert("Vui lòng thử lại sau ít phút nữa");
+                }
+            });
+        });
+    </script>
+}

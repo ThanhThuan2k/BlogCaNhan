@@ -1,0 +1,65 @@
+﻿@model IEnumerable<BlogCaNhan.DTOs.Admin>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SDT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoTen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lastLogin)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            var item = Model.ElementAt(i);
+            string background = i % 2 == 0 ? "pink" : "green";
+            <tr class="bk-@background text-white">
+                <td>
+                    @((ViewBag.Page-1)*10 + i+1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SDT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lastLogin)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-success" data-id="@item.Id">
+                        <i class="fa fa-eye"></i>
+                        <span>Chi tiết</span>
+                    </button>
+                    <button type="button" class="btn btn-success btn-unlock" data-id="@item.Id">
+                        <i class="fa fa-unlock"></i>
+                        <span>Mở khóa</span>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
