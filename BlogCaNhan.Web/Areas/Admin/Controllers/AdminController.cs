@@ -53,7 +53,7 @@ namespace BlogCaNhan.Web.Areas.Admin.Controllers
                 if (newAdmin.Avatar != null)
                 {
                     var uniqueFileName = PasswordHelper.GetUniqueFileName(newAdmin.Avatar.FileName);
-                    var uploads = Path.Combine(hostingEnvironment.WebRootPath, "uploads");
+                    var uploads = Path.Combine(hostingEnvironment.WebRootPath, "upload");
                     var filePath = Path.Combine(uploads, uniqueFileName);
                     newAdmin.Avatar.CopyTo(new FileStream(filePath, FileMode.Create));
                     newAdmin.PathAvatar = uniqueFileName;
@@ -94,6 +94,34 @@ namespace BlogCaNhan.Web.Areas.Admin.Controllers
             {
                 return Ok(new AjaxResponse(false, "Vui lòng thử lại sau ít phút nữa", 404));
             }
+        }
+
+        public IActionResult Update(BlogCaNhan.DTOs.Admin infomation)
+        {
+            if(ModelState.IsValid)
+            {
+                if (infomation.Avatar != null)
+                {
+                    var uniqueFileName = PasswordHelper.GetUniqueFileName(infomation.Avatar.FileName);
+                    var uploads = Path.Combine(hostingEnvironment.WebRootPath, "upload");
+                    var filePath = Path.Combine(uploads, uniqueFileName);
+                    infomation.Avatar.CopyTo(new FileStream(filePath, FileMode.Create));
+                    infomation.PathAvatar = uniqueFileName;
+                }
+                var result = adminRepository.Update(infomation);
+                if(result)
+                {
+                    return Ok(new AjaxResponse(true, "Cập nhật thành công", 200));
+                }
+                else
+                {
+                    return Ok(new AjaxResponse(false, "Cập nhật thất bại", 505));
+                }
+            }
+            else
+            {
+                return Ok(new AjaxResponse(false, "Vui lòng kiểm tra thông tin", 404));
+            }    
         }
     }
 }
