@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BlogCaNhan.Web.Common
+{
     public class PasswordHelper
     {
         // LUÔN GIỮ ĐỘ DÀI CHUỖI = 256

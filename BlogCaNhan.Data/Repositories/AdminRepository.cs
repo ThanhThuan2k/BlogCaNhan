@@ -49,7 +49,7 @@ namespace BlogCaNhan.Data.Repositories
         public bool Block(int id = 0)
         {
             var result = db.Admin.SingleOrDefault(item => item.Id == id);
-            if(result != null)
+            if (result != null)
             {
                 result.isBlock = true;
                 Save();
@@ -61,13 +61,42 @@ namespace BlogCaNhan.Data.Repositories
         public bool Unlock(int id = 0)
         {
             var admin = db.Admin.SingleOrDefault(item => item.Id == id);
-            if(admin != null)
+            if (admin != null)
             {
                 admin.isBlock = false;
                 Save();
                 return true;
             }
             else
+            {
+                return false;
+            }
+        }
+
+        public bool Update(Admin admin)
+        {
+            try
+            {
+                var find = db.Admin.Find(admin.Id);
+                if(find != null)
+                {
+                    find.Email = admin.Email;
+                    find.SDT = admin.SDT;
+                    find.NgayTao = admin.NgayTao;
+                    find.HoTen = admin.HoTen;
+                    find.isMale = admin.isMale;
+                    find.QueQuan = admin.QueQuan;
+                    find.NgaySinh = admin.NgaySinh;
+                    find.PathAvatar = admin.PathAvatar;
+                    Save();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
             {
                 return false;
             }
